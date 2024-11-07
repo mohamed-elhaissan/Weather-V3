@@ -1,11 +1,18 @@
 import { AnimatePresence, delay, motion } from "framer-motion";
+import underline from '../../public/underline.svg'
 export default function Introduction() {
   return (
     <div className="">
-      <h1 className="text-5xl">
+      <h1 className="text-6xl">
         <AnimatedHeader content={"Good Morning , Mohamed !"} />
       </h1>
-      <p className="text-center">Weather at Your Fingertips</p>
+      <motion.p 
+        initial ={{opacity : 0}}
+        animate = {{opacity : 1}}
+        transition={{
+            delay : 1
+        }}
+      className="text-center">Weather at Your Fingertips</motion.p>
     </div>
   );
 }
@@ -14,7 +21,7 @@ const AnimatedHeader = ({ content }) => {
 
   return (
     <AnimatePresence>
-      <div>
+      <div className="relative">
         {content.split("").map((item, index) => (
           <motion.span
             key={index}
@@ -34,6 +41,7 @@ const AnimatedHeader = ({ content }) => {
             {item}
           </motion.span>
         ))}
+        <motion.img  src={underline} className="absolute right-0 scale-50 left-1/2 -translate-x-1/2 rotate-180"  alt="" />
       </div>
     </AnimatePresence>
   );
