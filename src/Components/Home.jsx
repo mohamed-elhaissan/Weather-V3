@@ -6,11 +6,21 @@ import clouds from "../../public/clouds.svg";
 import { Weather } from "../Context/WeatherContext.jsx";
 export default function Home() {
   const { inputValue } = useContext(Input);
-  const { getData, getLocation } = useContext(Weather);
-  console.log(inputValue);
+  const { getData } = useContext(Weather);
   useEffect(() => {
-    if (!inputValue == "") {
-      let data = getLocation(inputValue);
+    if (inputValue !== "") {
+      async function getLocation() {
+        const response = await fetch(
+          `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${
+            import.meta.env.VITE_API_KEY
+          }`
+        );
+        const res = await response.json();
+        console.log(res);
+      }
+      const data = getLocation();
+      console.log(data[0].name);
+      
     }
   }, [inputValue]);
   return (
