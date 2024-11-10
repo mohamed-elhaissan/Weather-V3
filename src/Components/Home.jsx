@@ -18,13 +18,16 @@ export default function Home() {
           }`
         );
         const res = await response.json();
+        console.log(res[0].lon);
         return [res[0].lon, res[0].lat];
       }
       getLocation().then((data) => {
         const [longitude, latitude] = data;
-        getData(longitude, latitude).then((response)=>{response.json()}).then((data)=>console.log(data));
+        getData(longitude,latitude);
         
       });
+      
+      
     }
   }, [inputValue]);
   return (

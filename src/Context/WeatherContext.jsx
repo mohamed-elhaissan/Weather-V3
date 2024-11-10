@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 
 export const Weather = createContext();
 async function getData(long,alt){
@@ -8,5 +8,6 @@ async function getData(long,alt){
   }
 
 export default function WeatherProvider({ children }) {
+
   return <Weather.Provider value={{getData}}>{children}</Weather.Provider>;
 }
