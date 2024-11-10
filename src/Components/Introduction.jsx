@@ -28,7 +28,6 @@ export default function Introduction() {
   );
 }
 const AnimatedHeader = ({ content }) => {
-  console.log(content.split(""));
 
   return (
     <AnimatePresence>

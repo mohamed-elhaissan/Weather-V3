@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Input } from "../Context/InputContext.jsx";
 import Introduction from "./Introduction.jsx";
 import { motion } from "framer-motion";
@@ -7,8 +7,10 @@ import { Weather } from "../Context/WeatherContext.jsx";
 export default function Home() {
   const { inputValue } = useContext(Input);
   const { getData } = useContext(Weather);
+  const [ItemLocation, setItemLocation] = useState([]);
   useEffect(() => {
     if (inputValue !== "") {
+      // fetch longitude and latitude openweather APi :)
       async function getLocation() {
         const response = await fetch(
           `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${
@@ -16,15 +18,13 @@ export default function Home() {
           }`
         );
         const res = await response.json();
-        console.log(res[0].lon);
-        return [res[0].lon,res[0].lat]
-        
+        return [res[0].lon, res[0].lat];
       }
-      getLocation().then((data)=>{
-        const [longitude,latitude] = data;
-      })
-      console.log(getData(longitude,latitude));
-      
+      getLocation().then((data) => {
+        const [longitude, latitude] = data;
+        getData(longitude, latitude).then((response)=>{response.json()}).then((data)=>console.log(data));
+        
+      });
     }
   }, [inputValue]);
   return (
