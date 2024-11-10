@@ -16,10 +16,14 @@ export default function Home() {
           }`
         );
         const res = await response.json();
-        console.log(res);
+        console.log(res[0].lon);
+        return [res[0].lon,res[0].lat]
+        
       }
-      const data = getLocation();
-      console.log(data[0].name);
+      getLocation().then((data)=>{
+        const [longitude,latitude] = data;
+      })
+      console.log(getData(longitude,latitude));
       
     }
   }, [inputValue]);
