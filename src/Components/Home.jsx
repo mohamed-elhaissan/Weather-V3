@@ -10,11 +10,11 @@ export default function Home() {
   const { getData } = useContext(Weather);
   const [weatherData, setWeatherData] = useState();
   const { setIsLoading } = useContext(loading);
+  const [err,setErr]= useState(false)
   useEffect(() => {
     if (inputValue !== "") {
       // fetch longitude and latitude openweather APi :)
       async function getLocation() {
-        setIsLoading(true);
         const response = await fetch(
           `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${
             import.meta.env.VITE_API_KEY
@@ -24,16 +24,22 @@ export default function Home() {
         return [res[0].lon, res[0].lat];
       }
       async function getWeaatherData() {
+        setIsLoading(true)
         const [longitude, latitude] = await getLocation();
         try {
           const weatherResponse = await getData(longitude, latitude);
-          setWeatherData(...weatherResponse);
+          if (!weatherResponse) {
+            setErr(true)
+          }else {
+            setWeatherData(weatherResponse);
 
-          console.log('this is ',weatherData);
+          }
+          console.log(weatherData);
         } catch (error) {
-          console.error(error);
+          setErr(true)
+        }finally {
+          setIsLoading(false)
         }
-        setIsLoading(false)
       }
       getWeaatherData();
     }
