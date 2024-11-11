@@ -4,14 +4,17 @@ import Introduction from "./Introduction.jsx";
 import { motion } from "framer-motion";
 import clouds from "../../public/clouds.svg";
 import { Weather } from "../Context/WeatherContext.jsx";
+import { loading } from "../Context/loadingContext.jsx";
 export default function Home() {
   const { inputValue } = useContext(Input);
   const { getData } = useContext(Weather);
   const [weatherData, setWeatherData] = useState();
+  const { setIsLoading } = useContext(loading);
   useEffect(() => {
     if (inputValue !== "") {
       // fetch longitude and latitude openweather APi :)
       async function getLocation() {
+        setIsLoading(true);
         const response = await fetch(
           `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${
             import.meta.env.VITE_API_KEY
@@ -22,16 +25,22 @@ export default function Home() {
       }
       async function getWeaatherData() {
         const [longitude, latitude] = await getLocation();
-        const weatherResponse = await getData(longitude, latitude);
-        setWeatherData(weatherResponse);
-        console.log(weatherData);
+        try {
+          const weatherResponse = await getData(longitude, latitude);
+          setWeatherData(...weatherResponse);
+
+          console.log('this is ',weatherData);
+        } catch (error) {
+          console.error(error);
+        }
+        setIsLoading(false)
       }
       getWeaatherData();
     }
   }, [inputValue]);
   return (
     <div className="h-[95vh]  flex justify-center items-center">
-      {inputValue == "" && weatherData ? (
+      {inputValue == "" ? (
         <Introduction />
       ) : (
         <motion.div>
@@ -45,11 +54,13 @@ export default function Home() {
           </motion.h1>
           <div className="bg-white rounded-xl px-5 items-center gap-9 shadow-custom-shadow flex  mt-5">
             <h2 className="text-4xl flex ">
-              {weatherData.current.temperature_2m} <sub>°C</sub>
+              <sub>°C</sub>
             </h2>
             <div className="bg-[#F7F6F7] py-4 w-[80%]   my-2 px-2 rounded-lg shadow-custom-shadow">
-              <h3 className="text-3xl">{weatherData.current.is_day ==0  ? 'night' :'day'}</h3>
-              <p className="text-sm">Its Look a good <span>{weatherData.current.is_day ==0  ? 'night' :'day'}</span> To do Something</p>
+              <h3 className="text-3xl"></h3>
+              <p className="text-sm">
+                Its Look a good <span></span> To do Something
+              </p>
             </div>
           </div>
           <div className="mt-10 bg-white flex text-center p-5 rounded-lg gap-5">
