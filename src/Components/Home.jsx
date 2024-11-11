@@ -8,9 +8,9 @@ import { loading } from "../Context/loadingContext.jsx";
 export default function Home() {
   const { inputValue } = useContext(Input);
   const { getData } = useContext(Weather);
-  const [weatherData, setWeatherData] = useState();
+  const [weatherData, setWeatherData] = useState(null);
   const { setIsLoading } = useContext(loading);
-  const [err,setErr]= useState(false)
+  const [err, setErr] = useState(false);
   useEffect(() => {
     if (inputValue !== "") {
       // fetch longitude and latitude openweather APi :)
@@ -24,22 +24,11 @@ export default function Home() {
         return [res[0].lon, res[0].lat];
       }
       async function getWeaatherData() {
-        setIsLoading(true)
+        setIsLoading(true);
         const [longitude, latitude] = await getLocation();
-        try {
-          const weatherResponse = await getData(longitude, latitude);
-          if (!weatherResponse) {
-            setErr(true)
-          }else {
-            setWeatherData(weatherResponse);
-
-          }
-          console.log(weatherData);
-        } catch (error) {
-          setErr(true)
-        }finally {
-          setIsLoading(false)
-        }
+        const weatherResponse = await getData(longitude, latitude);
+        setWeatherData(weatherResponse)
+        setwea
       }
       getWeaatherData();
     }
@@ -48,6 +37,8 @@ export default function Home() {
     <div className="h-[95vh]  flex justify-center items-center">
       {inputValue == "" ? (
         <Introduction />
+      ) : err ? (
+        <h2>Failed to fetch weather data Try Another city</h2>
       ) : (
         <motion.div>
           <motion.h1
