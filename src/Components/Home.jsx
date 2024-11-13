@@ -3,13 +3,46 @@ import { Input } from "../Context/InputContext.jsx";
 import Introduction from "./Introduction.jsx";
 import { motion } from "framer-motion";
 import clouds from "../../public/clouds.svg";
+import cloudSnow from "../../public/clouds-snow.svg";
+import suncloudsRain from "../../public/sun-clouds-rain.svg";
+import sunClouds from "../../public/sun-clouds.svg";
+import sun from "../../public/sun.svg";
 import { Weather } from "../Context/WeatherContext.jsx";
 import { loading } from "../Context/loadingContext.jsx";
+import { delay } from "framer-motion";
 export default function Home() {
   const { inputValue } = useContext(Input);
   const { getData } = useContext(Weather);
   const [weatherData, setWeatherData] = useState(null);
   const { isLoading, setIsLoading } = useContext(loading);
+
+  // this function is to get the weather status if its cloud or clear sky .....
+  function getWeatherStatus(temperature) {
+    if (temperature < 0) {
+      return "Freezing";
+    } else if (temperature < 10) {
+      return "Cold";
+    } else if (temperature < 20) {
+      return "Cool";
+    } else if (temperature < 30) {
+      return "Pleasant";
+    } else {
+      return "Hot";
+    }
+  }
+  function getWeatherIcon(temperature) {
+    const iconMap = {
+      Freezing: cloudSnow,
+      Cold: clouds,
+      cool: sunClouds,
+      Pleasant: suncloudsRain,
+      Hot: sun,
+    };
+    const weatherResultas = getWeatherStatus(temperature);
+    const icon = iconMap[weatherResultas];
+    return <img src={icon} alt="no alt here" />;
+  }
+
   useEffect(() => {
     if (inputValue !== "") {
       // fetch longitude and latitude openweather APi :)
@@ -31,57 +64,88 @@ export default function Home() {
         setIsLoading(false);
       }
       getWetherData();
+
       console.log(weatherData);
     }
   }, [inputValue]);
+  const variants = {
+    hidden: {
+      opacity: 0,
+      y: "40px",
+    },
+    visible: {
+      opacity: 1,
+      y: "0px",
+    },
+  };
+
   return (
     !isLoading && (
-      <div className="h-[95vh]  flex justify-center items-center">
+      <div className="h-[95vh]  flex justify-center items-center ">
         {inputValue == "" ? (
           <Introduction />
         ) : !weatherData ? (
           <h2>Failed to fetch weather data Try Another city</h2>
         ) : (
           weatherData && (
-            <motion.div>
+            <motion.div className="">
               <motion.h1
-                initial={{ y: "40px", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.55 }}
                 className="text-3xl text-center"
               >
                 The Weather in {inputValue}
               </motion.h1>
-              <div className="bg-white rounded-xl px-5 items-center gap-9 shadow-custom-shadow flex  mt-5">
+              <motion.div
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.6 }}
+                className="bg-white rounded-xl px-5 items-center gap-9 shadow-custom-shadow flex mx-auto w-[50%]  mt-5"
+              >
                 <h2 className="text-4xl flex ">
                   {weatherData.daily.temperature_2m_max[0]}
                   <sub>°C</sub>
                 </h2>
                 <div className="bg-[#F7F6F7] py-4 w-[80%]   my-2 px-2 rounded-lg shadow-custom-shadow">
-                  <h3 className="text-3xl"></h3>
+                  <h3 className="text-3xl">
+                    {getWeatherStatus(weatherData.current.temperature_2m)}
+                  </h3>
                   <p className="text-sm">
-                    Its Look a good{" "}
+                    Its Look a good
                     <span>
-                      {weatherData.current.is_day == 1 ? "day" : "night"}
+                      {weatherData.current.is_day == 1 ? " day" : " night"}
                     </span>{" "}
                     To do Something
                   </p>
                 </div>
-              </div>
-              <div className="mt-10 bg-white flex text-center p-5 rounded-lg gap-5">
+              </motion.div>
+              <motion.div
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.7 }}
+                className="mt-10 bg-white flex text-center p-5 rounded-lg gap-5"
+              >
                 {weatherData.daily.temperature_2m_max?.map((item, index) => (
-                  <div
+                  <motion.div
+                    variants={variants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 0.7 + index / 10 }}
                     key={index}
                     className="bg-[#F7F6F7] py-4 px-3 shadow-custom-shadow my-2 rounded-lg"
                   >
                     <h4>{weatherData.daily.time[index]}</h4>
-                    <img src={clouds} alt="" />
+                    {getWeatherIcon(weatherData.daily.time[index])}
                     <h2>
                       {item} <sub>C</sub>
                     </h2>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           )
         )}
