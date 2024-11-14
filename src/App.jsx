@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Header from "./Components/header";
 import Home from "./Components/Home";
 import { loading } from "./Context/loadingContext";
-import { color, motion } from "framer-motion";
-import { mouseContext } from "./Context/mouseMoveContext";
+import {  motion } from "framer-motion";
 const variants = {
   initial: {
     scaleY: 0.5,
@@ -22,23 +21,7 @@ const variants = {
 };
 function App() {
   const { isLoading } = useContext(loading);
-  const {mouseInfo,setMouseInfo} = useContext(mouseContext);
-  useEffect(() => {
-    const mouseMove = (e) => {
-      setMouseInfo({ x: e.clientX, y: e.clientY ,scale : 1,color :'none'});
-      console.log(mouseInfo);
-    };
-    window.addEventListener("mousemove", mouseMove);
-    return () => {
-      window.removeEventListener("mousemove", mouseMove);
-    };
-  });
-  const variants = {
-    default : {
-      x : setMouseInfo.x - 20,
-      y : setMouseInfo.y - 20,
-    }
-  }
+
   return (
     <div>
       {isLoading && (
@@ -74,10 +57,7 @@ function App() {
           </motion.div>
         </div>
       )}
-      <motion.div 
-      animate = {{x : mouseInfo.x , y:mouseInfo.y}}
-      transition={{delay : 0}}
-      className="h-10 w-10 bg-black rounded-full fixed left-0 top-0 "></motion.div>
+
       <Header />
       <Home />
     </div>

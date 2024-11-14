@@ -4,19 +4,16 @@ import Introduction from "./Introduction.jsx";
 import { motion } from "framer-motion";
 import clouds from "../../public/clouds.svg";
 import cloudSnow from "../../public/clouds-snow.svg";
-import suncloudsRain from "../../public/sun-clouds-rain.svg";
 import sun from "../../public/sun.svg";
 import { Weather } from "../Context/WeatherContext.jsx";
 import { loading } from "../Context/loadingContext.jsx";
-import { delay } from "framer-motion";
-import { mouseContext } from "../Context/mouseMoveContext.jsx";
 
 export default function Home() {
   const { inputValue } = useContext(Input);
   const { getData } = useContext(Weather);
   const [weatherData, setWeatherData] = useState(null);
   const { isLoading, setIsLoading } = useContext(loading);
-  const {mouseInfo,setMouseInfo} = useContext(mouseContext)
+  
 
   // this function is to get the weather status if its cloud or clear sky .....
   function getWeatherStatus(temperature) {
@@ -30,6 +27,7 @@ export default function Home() {
       return "Hot";
     }
   }
+  // to get the icon of wether like if the sky is sun get the sun svg
   function getWeatherIcon(temperature) {
     const iconMap = {
       Freezing: cloudSnow,
@@ -41,12 +39,11 @@ export default function Home() {
 
     if (weatherResultas !== undefined) {
       const icon = iconMap[weatherResultas];
-      return <img  src={icon} alt="no alt here" />;
+      return <img src={icon} alt="no alt here" />;
     } else {
       return <img src={sun} alt="no alt here" />;
     }
   }
-
   useEffect(() => {
     if (inputValue !== "") {
       // fetch longitude and latitude openweather APi :)
@@ -85,14 +82,14 @@ export default function Home() {
 
   return (
     !isLoading && (
-      <div className="h-[95vh]  flex justify-center items-center ">
+      <div className="flex h-[100vh] justify-center items-center ">
         {inputValue == "" ? (
           <Introduction />
         ) : !weatherData ? (
           <h2>Failed to fetch weather data Try Another city</h2>
         ) : (
           weatherData && (
-            <motion.div className="">
+            <motion.div className="mt-40">
               <motion.h1
                 variants={variants}
                 initial="hidden"

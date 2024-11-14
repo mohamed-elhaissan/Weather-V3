@@ -5,11 +5,9 @@ import App from "./App.jsx";
 import WeatherProvider from "./Context/WeatherContext.jsx";
 import InputProvider from "./Context/InputContext.jsx";
 import LoadingProvider from "./Context/loadingContext.jsx";
-import MouseProvider from "./Context/mouseMoveContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <MouseProvider>
     <LoadingProvider>
       <WeatherProvider>
         <InputProvider>
@@ -17,6 +15,5 @@ createRoot(document.getElementById("root")).render(
         </InputProvider>
       </WeatherProvider>
     </LoadingProvider>
-    </MouseProvider>
   </StrictMode>
 );

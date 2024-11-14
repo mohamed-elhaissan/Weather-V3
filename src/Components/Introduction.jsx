@@ -1,22 +1,20 @@
-import { AnimatePresence, delay, motion } from "framer-motion";
-import { useContext } from "react"
+import { AnimatePresence,  motion } from "framer-motion";
 import underline from "../../public/underline.svg";
-import { mouseContext } from "../Context/mouseMoveContext.jsx";
 export default function Introduction() {
-  const { mouseInfo, setMouseInfo } = useContext(mouseContext);
+ 
   return (
     <AnimatePresence>
       <motion.div
-        className="inline-block"
+        className="inline-block "
         initial={{ y: 0, opacity: 1 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: "-100%", opacity: 0 }}
         transition={{ duration: 0.5 }}
         // Adjust duration as needed
       >
-        <h1 className="text-6xl">
-          <motion.AnimatedHeader content={"Good Morning , Mohamed !"} />
-        </h1>
+        <motion.h1  className="text-6xl">
+          <AnimatedHeader content={"Good Morning , Mohamed !"} />
+        </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -32,9 +30,10 @@ export default function Introduction() {
   );
 }
 const AnimatedHeader = ({ content }) => {
+ 
   return (
     <AnimatePresence>
-      <div className="relative">
+      <motion.div  className="relative">
         {content.split("").map((item, index) => (
           <motion.span
             key={index}
@@ -60,7 +59,7 @@ const AnimatedHeader = ({ content }) => {
           className="absolute right-0 scale-50 left-1/2 -translate-x-1/2 rotate-180"
           alt=""
         />
-      </div>
+      </motion.div>
     </AnimatePresence>
   );
 };

@@ -63,9 +63,11 @@ export default function Header() {
           <option key={key} value={item}>{item}</option>
         ))}
       </motion.select>
-      <div>
-        <MdDarkMode className="text-2xl cursor-pointer" />
-      </div>
+      <motion.div 
+      whileTap={{scale:0.9}}
+      >
+        <MdDarkMode  className="text-2xl cursor-pointer scale-[1.5]"   />
+      </motion.div>
     </div>
   );
 }
