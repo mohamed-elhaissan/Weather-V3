@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import clouds from "../../public/clouds.svg";
 import cloudSnow from "../../public/clouds-snow.svg";
 import suncloudsRain from "../../public/sun-clouds-rain.svg";
-import sunClouds from "../../public/sun-clouds.svg";
 import sun from "../../public/sun.svg";
 import { Weather } from "../Context/WeatherContext.jsx";
 import { loading } from "../Context/loadingContext.jsx";
 import { delay } from "framer-motion";
+
 export default function Home() {
   const { inputValue } = useContext(Input);
   const { getData } = useContext(Weather);
@@ -18,48 +18,31 @@ export default function Home() {
 
   // this function is to get the weather status if its cloud or clear sky .....
   function getWeatherStatus(temperature) {
-    if (temperature < 0 && temperature < 10) {
+    let integertemperature = Math.floor(temperature);
+
+    if (integertemperature < 0) {
       return "Freezing";
-    } else if (temperature >= 10 && temperature < 20) {
+    } else if (integertemperature >= 10 && integertemperature <= 15) {
       return "Cold";
-    } else if (temperature >= 20 && temperature < 30) {
-      return "Cool";
-    } else if (temperature >= 30) {
+    } else if (integertemperature > 15) {
       return "Hot";
     }
   }
   function getWeatherIcon(temperature) {
     const iconMap = {
-      Freezing: {
-        name: "Freezing",
-        status: cloudSnow,
-      },
-      Cold: {
-        name: "Cold",
-        status: clouds,
-      },
-      Cool: {
-        name: "Cool",
-        status: sunClouds,
-      },
-      Pleasant: {
-        name: "Pleasant",
-        status: suncloudsRain,
-      },
-      Hot: {
-        name: "Hot",
-        status: sun,
-      },
+      Freezing: cloudSnow,
+      Cold: clouds,
+      Hot: sun,
     };
 
     const weatherResultas = getWeatherStatus(temperature);
-    let icon;
-    iconMap.forEach((item) => {
-      if (item.name == weatherResultas) {
-        return (icon = item.status);
-      }
-    });
-    return <img src={icon} alt="no alt here" />;
+
+    if (weatherResultas !== undefined) {
+      const icon = iconMap[weatherResultas];
+      return <img className="bg-red-200" src={icon} alt="no alt here" />;
+    } else {
+      return <img src={sun} alt="no alt here" />;
+    }
   }
 
   useEffect(() => {
@@ -146,7 +129,7 @@ export default function Home() {
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.7 }}
-                className="mt-10 bg-white flex text-center p-5 rounded-lg gap-5"
+                className="mt-10 bg-white flex flex-wrap items-center justify-center  text-center p-5 rounded-lg gap-5"
               >
                 {weatherData.daily.temperature_2m_max?.map((item, index) => (
                   <motion.div
@@ -155,7 +138,7 @@ export default function Home() {
                     animate="visible"
                     transition={{ delay: 0.7 + index / 10 }}
                     key={index}
-                    className="bg-[#F7F6F7] py-4 px-3 shadow-custom-shadow my-2 rounded-lg"
+                    className="bg-[#F7F6F7]   py-4 px-3 shadow-custom-shadow my-2 rounded-lg"
                   >
                     <h4>{weatherData.daily.time[index]}</h4>
                     {getWeatherIcon(
