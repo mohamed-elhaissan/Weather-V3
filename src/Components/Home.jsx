@@ -9,12 +9,14 @@ import sun from "../../public/sun.svg";
 import { Weather } from "../Context/WeatherContext.jsx";
 import { loading } from "../Context/loadingContext.jsx";
 import { delay } from "framer-motion";
+import { mouseContext } from "../Context/mouseMoveContext.jsx";
 
 export default function Home() {
   const { inputValue } = useContext(Input);
   const { getData } = useContext(Weather);
   const [weatherData, setWeatherData] = useState(null);
   const { isLoading, setIsLoading } = useContext(loading);
+  const {mouseInfo,setMouseInfo} = useContext(mouseContext)
 
   // this function is to get the weather status if its cloud or clear sky .....
   function getWeatherStatus(temperature) {
@@ -39,7 +41,7 @@ export default function Home() {
 
     if (weatherResultas !== undefined) {
       const icon = iconMap[weatherResultas];
-      return <img className="bg-red-200" src={icon} alt="no alt here" />;
+      return <img  src={icon} alt="no alt here" />;
     } else {
       return <img src={sun} alt="no alt here" />;
     }
