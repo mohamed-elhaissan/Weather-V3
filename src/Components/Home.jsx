@@ -18,28 +18,47 @@ export default function Home() {
 
   // this function is to get the weather status if its cloud or clear sky .....
   function getWeatherStatus(temperature) {
-    if (temperature < 0) {
+    if (temperature < 0 && temperature < 10) {
       return "Freezing";
-    } else if (temperature < 10) {
+    } else if (temperature >= 10 && temperature < 20) {
       return "Cold";
-    } else if (temperature < 20) {
+    } else if (temperature >= 20 && temperature < 30) {
       return "Cool";
-    } else if (temperature < 30) {
-      return "Pleasant";
-    } else {
+    } else if (temperature >= 30) {
       return "Hot";
     }
   }
   function getWeatherIcon(temperature) {
     const iconMap = {
-      Freezing: cloudSnow,
-      Cold: clouds,
-      cool: sunClouds,
-      Pleasant: suncloudsRain,
-      Hot: sun,
+      Freezing: {
+        name: "Freezing",
+        status: cloudSnow,
+      },
+      Cold: {
+        name: "Cold",
+        status: clouds,
+      },
+      Cool: {
+        name: "Cool",
+        status: sunClouds,
+      },
+      Pleasant: {
+        name: "Pleasant",
+        status: suncloudsRain,
+      },
+      Hot: {
+        name: "Hot",
+        status: sun,
+      },
     };
+
     const weatherResultas = getWeatherStatus(temperature);
-    const icon = iconMap[weatherResultas];
+    let icon;
+    iconMap.forEach((item) => {
+      if (item.name == weatherResultas) {
+        return (icon = item.status);
+      }
+    });
     return <img src={icon} alt="no alt here" />;
   }
 
@@ -139,7 +158,9 @@ export default function Home() {
                     className="bg-[#F7F6F7] py-4 px-3 shadow-custom-shadow my-2 rounded-lg"
                   >
                     <h4>{weatherData.daily.time[index]}</h4>
-                    {getWeatherIcon(weatherData.daily.time[index])}
+                    {getWeatherIcon(
+                      weatherData.daily.temperature_2m_min[index]
+                    )}
                     <h2>
                       {item} <sub>C</sub>
                     </h2>

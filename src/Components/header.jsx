@@ -51,7 +51,7 @@ export default function Header() {
     <div className="flex justify-between items-center px-4 py-2 ">
       <h1 className="text-2xl font-bold tracking-tighter">Aurora</h1>
       <motion.select
-        className="w-[30%] rounded-lg shadow-custom-shadow px-3 outline-[#B8B8BF] py-2 cursor-pointer"
+        className="w-[30%] rounded-lg shadow-custom-shadow px-3 outline-[#  r] py-2 cursor-pointer"
         onChange={(e) => {
           setInputValue(e.target.value);
         }}
