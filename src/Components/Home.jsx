@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import CustomCounter from "./counter.jsx";
 import { Input } from "../Context/InputContext.jsx";
 import Introduction from "./Introduction.jsx";
 import { motion } from "framer-motion";
@@ -106,10 +107,8 @@ export default function Home() {
                 transition={{ delay: 0.6 }}
                 className="bg-white rounded-xl px-5 items-center gap-9 shadow-custom-shadow flex mx-auto w-[50%]  mt-5"
               >
-                <h2 className="text-4xl flex ">
-                  {weatherData.daily.temperature_2m_max[0]}
-                  <sub>°C</sub>
-                </h2>
+                <CustomCounter endValue={weatherData.daily.temperature_2m_max[0]}/>
+               
                 <div className="bg-[#F7F6F7] py-4 w-[80%]   my-2 px-2 rounded-lg shadow-custom-shadow">
                   <h3 className="text-3xl">
                     {getWeatherStatus(weatherData.current.temperature_2m)}
@@ -135,7 +134,12 @@ export default function Home() {
                     variants={variants}
                     initial="hidden"
                     animate="visible"
-                    transition={{ delay: 0.7 + index / 10 }}
+                    transition={{
+                      delay: 0.7 + index / 10,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 10,
+                    }}
                     key={index}
                     className="bg-[#F7F6F7]   py-4 px-3 shadow-custom-shadow my-2 rounded-lg"
                   >
