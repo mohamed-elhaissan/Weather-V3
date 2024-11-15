@@ -87,7 +87,7 @@ export default function Home() {
         {inputValue == "" ? (
           <Introduction />
         ) : !weatherData ? (
-          <h2>Failed to fetch weather data Try Another city</h2>
+          <h2 className="dark:text-white">Failed to fetch weather data Try Another city</h2>
         ) : (
           weatherData && (
             <motion.div className="mt-40">
@@ -96,7 +96,7 @@ export default function Home() {
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.55 }}
-                className="text-3xl text-center"
+                className="text-3xl text-center dark:text-white"
               >
                 The Weather in {inputValue}
               </motion.h1>

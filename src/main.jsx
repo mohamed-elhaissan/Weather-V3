@@ -5,9 +5,11 @@ import App from "./App.jsx";
 import WeatherProvider from "./Context/WeatherContext.jsx";
 import InputProvider from "./Context/InputContext.jsx";
 import LoadingProvider from "./Context/loadingContext.jsx";
+import DarkModeProivder from "./Context/darkmodeContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <DarkModeProivder>
     <LoadingProvider>
       <WeatherProvider>
         <InputProvider>
@@ -15,5 +17,6 @@ createRoot(document.getElementById("root")).render(
         </InputProvider>
       </WeatherProvider>
     </LoadingProvider>
+    </DarkModeProivder>
   </StrictMode>
 );

@@ -5,7 +5,7 @@ export default function Introduction() {
   return (
     <AnimatePresence>
       <motion.div
-        className="inline-block "
+        className="inline-block dark:text-white "
         initial={{ y: 0, opacity: 1 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: "-100%", opacity: 0 }}
@@ -49,7 +49,7 @@ const AnimatedHeader = ({ content }) => {
               duration: 0.25,
             }}
             exit={{ y: "-100%", opacity: 0 }}
-            className="inline-block"
+            className="inline-block "
           >
             {item}
           </motion.span>

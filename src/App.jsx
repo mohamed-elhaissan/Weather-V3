@@ -3,6 +3,7 @@ import Header from "./Components/header";
 import Home from "./Components/Home";
 import { loading } from "./Context/loadingContext";
 import {  motion } from "framer-motion";
+import "./App.css"
 const variants = {
   initial: {
     scaleY: 0.5,
@@ -23,7 +24,7 @@ function App() {
   const { isLoading } = useContext(loading);
 
   return (
-    <div>
+    <div className="dark">
       {isLoading && (
         <div className="fixed left-0 top-0 bg-[#B8B8BF] w-full h-full z-10 flex justify-center items-center">
           <motion.div 
