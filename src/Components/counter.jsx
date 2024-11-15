@@ -18,6 +18,7 @@ export default function CustomCounter({ endValue }) {
   return (
     <div className="text-4xl flex ">
       <motion.h2
+      className="dark:text-white"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ y: -10, opacity: 0 }}
@@ -29,7 +30,7 @@ export default function CustomCounter({ endValue }) {
       >
         {count}
       </motion.h2>
-      <sub>°C</sub>
+      <sub className="dark:text-white">°C</sub>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Input } from "../Context/InputContext.jsx";
 import { MdDarkMode } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -49,10 +49,15 @@ export default function Header() {
     "Buenos Aires",
     "Mexico City",
   ];
+  useEffect(() => {
+    document.body.classList.toggle('dark',isDarkMode)
+  }, [isDarkMode]);
 
   return (
     <div className="flex justify-between items-center px-4 py-2 ">
-      <h1 className="text-2xl font-bold tracking-tighter dark:text-white text-black">Aurora</h1>
+      <h1 className="text-2xl font-bold tracking-tighter dark:text-white text-black">
+        Aurora
+      </h1>
       <motion.select
         className="w-[30%] rounded-lg shadow-custom-shadow px-3 outline-none dark:bg-[#161616] dark:text-white py-2 cursor-pointer"
         onChange={(e) => {
@@ -77,9 +82,16 @@ export default function Header() {
         <MdDarkMode className="text-2xl dark:text-white text-black cursor-pointer scale-[1.5]  " />
         <motion.img
           initial={{
-            scale: 100,
+            scale: 0,
           }}
-          src={circleImg}
+          animate={isDarkMode ? { scale: 100 } : { scale: 0 }}
+          transition={{
+            type: 'spring',
+            stiffness: 100,
+            damping: 10,
+            delay: 0.3,
+            src={circleImg}
+          }}
           alt=""
           className="fixed right-0 top-0 -z-20"
         />

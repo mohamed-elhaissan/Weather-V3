@@ -105,15 +105,15 @@ export default function Home() {
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.6 }}
-                className="bg-white rounded-xl px-5 items-center gap-9 shadow-custom-shadow flex mx-auto w-[50%]  mt-5"
+                className="bg-white dark:bg-[#161616]  rounded-xl px-5 items-center gap-9 shadow-custom-shadow flex mx-auto w-[50%]  mt-5"
               >
                 <CustomCounter endValue={weatherData.daily.temperature_2m_max[0]}/>
                
-                <div className="bg-[#F7F6F7] py-4 w-[80%]   my-2 px-2 rounded-lg shadow-custom-shadow">
-                  <h3 className="text-3xl">
+                <div className="bg-[#F7F6F7] dark:bg-[#626262]  py-4 w-[80%]   my-2 px-2 rounded-lg shadow-custom-shadow">
+                  <h3 className="text-3xl dark:text-white">
                     {getWeatherStatus(weatherData.current.temperature_2m)}
                   </h3>
-                  <p className="text-sm">
+                  <p className="text-sm dark:text-">
                     Its Look a good
                     <span>
                       {weatherData.current.is_day == 1 ? " day" : " night"}
@@ -127,7 +127,7 @@ export default function Home() {
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.7 }}
-                className="mt-10 bg-white flex flex-wrap items-center justify-center  text-center p-5 rounded-lg gap-5"
+                className="mt-10 bg-white dark:bg-[#161616] flex flex-wrap items-center justify-center  text-center p-5 rounded-lg gap-5"
               >
                 {weatherData.daily.temperature_2m_max?.map((item, index) => (
                   <motion.div
@@ -141,7 +141,7 @@ export default function Home() {
                       damping: 10,
                     }}
                     key={index}
-                    className="bg-[#F7F6F7]   py-4 px-3 shadow-custom-shadow my-2 rounded-lg"
+                    className="bg-[#F7F6F7] dark:bg-[#626262]  py-4 px-3 shadow-custom-shadow my-2 rounded-lg"
                   >
                     <h4>{weatherData.daily.time[index]}</h4>
                     {getWeatherIcon(
