@@ -37,6 +37,10 @@ const AnimatedHeader = ({ content }) => {
         {content.split("").map((item, index) => (
           <motion.span
             key={index}
+            whileHover={{
+              color : '#5f14e0',
+              fontWeight : '900',
+            }}
             initial={{ opacity: 0, scale: 0, y: "100px" }}
             animate={{ opacity: 1, scale: 1, y: "0px" }}
             transition={{

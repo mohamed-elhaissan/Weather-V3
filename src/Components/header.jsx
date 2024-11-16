@@ -90,8 +90,8 @@ export default function Header() {
             stiffness: 100,
             damping: 10,
             delay: 0.3,
-            src={circleImg}
           }}
+          src={circleImg}
           alt=""
           className="fixed right-0 top-0 -z-20"
         />
