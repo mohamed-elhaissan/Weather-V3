@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Input } from "../Context/InputContext.jsx";
 import { MdDarkMode } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -50,7 +50,7 @@ export default function Header() {
     "Mexico City",
   ];
   useEffect(() => {
-    document.body.classList.toggle('dark',isDarkMode)
+    document.body.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
 
   return (
@@ -86,10 +86,9 @@ export default function Header() {
           }}
           animate={isDarkMode ? { scale: 100 } : { scale: 0 }}
           transition={{
-            type: 'spring',
-            stiffness: 100,
-            damping: 10,
-            delay: 0.3,
+
+            ease: "easeInOut",
+            duration: 0.25,
           }}
           src={circleImg}
           alt=""
