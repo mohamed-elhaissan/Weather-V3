@@ -1,6 +1,6 @@
 
 <h1>Screenshot</h1>
-![Screenshot](https://github.com/user-attachments/assets/ce292440-1ebd-49cb-92d8-514b50ef69c4)
+[![Product Name Screen Shot][product-screenshot]]
 
 
 <h1>Weather App 🌤️</h1>
@@ -84,3 +84,4 @@ Weather conditions
 Wind speed and more.
 Enjoy the smooth transitions and responsive design on any device.
 ```
+[product-screenshot]: Screenshot.png
