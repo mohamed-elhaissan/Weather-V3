@@ -1,6 +1,6 @@
 
 <h1>Screenshot</h1>
-<img src"https://github.com/user-attachments/assets/a7c2a613-e2e9-4d87-b1a8-c4fd3b634c64"/>
+<img src="https://github.com/user-attachments/assets/a7c2a613-e2e9-4d87-b1a8-c4fd3b634c64" alt="Girl in a jacket" width="500" height="600">
 
 
 <h1>Weather App 🌤️</h1>
