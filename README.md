@@ -31,26 +31,26 @@ git clone https://github.com/yourusername/weather-app.git
 ```
 Navigate to the project directory:
 bash
-```
 Copy code
+```
 cd weather-app
-```
 Install dependencies:
-bash
 ```
+bash
 Copy code
+```
 npm install
 ```
 Create a .env file in the root directory and add your OpenWeather API Key:
 makefile
-```
 Copy code
+```
 VITE_WEATHER_API_KEY=your_api_key_here
 ```
 Start the development server:
 bash
-```
 Copy code
+``` 
 npm run dev
 ```
 Usage 🌎
