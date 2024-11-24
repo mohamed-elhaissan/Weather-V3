@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 <h1>Screenshot</h1>
-(./Screenshot.png)
+![Weather App Screenshot](./Screenshot.png)
 
 <h1>Weather App 🌤️</h1>
 A sleek and modern weather application built using React and Vite, styled with <a href="https://tailwindcss.com/">Tailwind CSS</a>, and enhanced with smooth animations powered by <a href="https://motion.dev/">Framer Motion</a>. This app integrates the OpenWeather API to provide real-time weather updates for any location, complete with a responsive and user-friendly design.
