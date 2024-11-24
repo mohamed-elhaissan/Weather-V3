@@ -1,6 +1,6 @@
 
 <h1>Screenshot</h1>
-[![Product Name Screen Shot][product-screenshot]]
+![Screenshot](https://github.com/user-attachments/assets/a7c2a613-e2e9-4d87-b1a8-c4fd3b634c64)
 
 
 <h1>Weather App 🌤️</h1>
