@@ -84,4 +84,4 @@ Weather conditions
 Wind speed and more.
 Enjoy the smooth transitions and responsive design on any device.
 ```
-[product-screenshot]: Screenshot.png
+[product-screenshot]: ./Screenshot.png
