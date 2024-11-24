@@ -1,4 +1,4 @@
-Weather App 🌤️
+<h2>Weather App 🌤️</h2>
 A sleek and modern weather application built using React and Vite, styled with Tailwind CSS, and enhanced with smooth animations powered by Framer Motion. This app integrates the OpenWeather API to provide real-time weather updates for any location, complete with a responsive and user-friendly design.
 
 Features 🚀
