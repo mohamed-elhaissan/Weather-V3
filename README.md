@@ -27,19 +27,7 @@ A sleek and modern weather application built using React and Vite, styled with <
 
 
 =======
-<h1>Screenshot of The project :</h1>
-(./Screenshot.png)
 
-
-<h1>Weather App 🌤️</h1>
-A sleek and modern weather application built using React and Vite, styled with <a href="https://tailwindcss.com/">Tailwind CSS</a>, and enhanced with smooth animations powered by <a href="https://motion.dev/">Framer Motion</a>. This app integrates the OpenWeather API to provide real-time weather updates for any location, complete with a responsive and user-friendly design.
-
-<h1>Features 🚀</h1>
-#Current Weather Data: Real-time weather updates for cities worldwide.
-#Responsive Design: Optimized for all devices, from desktops to mobile phones.
-#Dynamic Animations: Engaging transitions and effects using Framer Motion.
-#Interactive Icons: Integrated React Icons for a visually appealing interface.
-#Fast Performance: Built with Vite for a lightning-fast development experience.
 
 
 >>>>>>> 130ebab (udpating)
