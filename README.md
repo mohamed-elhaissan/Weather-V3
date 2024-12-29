@@ -12,7 +12,6 @@ A sleek and modern weather application built using React and Vite, styled with <
     Current Weather Data: Real-time weather updates for cities worldwide.
   </li>
   <li>
-    Responsive Design: Optimized for all devices, from desktops to mobile phones.
   </li>
   <li>
     Dynamic Animations: Engaging transitions and effects using Framer Motion.
