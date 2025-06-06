@@ -1,10 +1,13 @@
 
 
 
-<h1>Screenshot</h1>
-<img src="https://github.com/mohamed-elhaissan/Weather-V3/blob/main/Screenshot-1.svg" alt="" width="100%" height="100%">
-<img src="https://github.com/user-attachments/assets/a7c2a613-e2e9-4d87-b1a8-c4fd3b634c64" alt="" width="100%" height="100%">
 
+<h1>weather app ui</h1>
+<img src="https://github.com/mohamed-elhaissan/Weather-V3/blob/main/Screenshot-1.svg" alt="" width="100%" height="100%">
+
+<h1>weather preview</h1>
+<img src="https://github.com/user-attachments/assets/a7c2a613-e2e9-4d87-b1a8-c4fd3b634c64" alt="" width="100%" height="100%">
+ 
 
 <h1>Weather App 🌤️</h1>
 A sleek and modern weather application built using React and Vite, styled with <a href="https://tailwindcss.com/">Tailwind CSS</a>, and enhanced with smooth animations powered by <a href="https://motion.dev/">Framer Motion</a>. This app integrates the OpenWeather API to provide real-time weather updates for any location, complete with a responsive and user-friendly design.
