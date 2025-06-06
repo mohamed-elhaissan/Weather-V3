@@ -1,0 +1,29 @@
+<svg width="1512" height="982" viewBox="0 0 1512 982" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2_3)">
+<rect width="1512" height="982" fill="white"/>
+<rect x="1026.5" y="329" width="533" height="43" rx="5" transform="rotate(180 1026.5 329)" fill="#ECEFF6"/>
+<path d="M1170 478C1170 480.761 1167.76 483 1165 483H355C352.239 483 350 480.761 350 478V355C350 352.239 352.239 350 355 350H1165C1167.76 350 1170 352.239 1170 355V478Z" fill="#ECEFF6"/>
+<rect x="1145" y="468" width="631" height="102" rx="5" transform="rotate(180 1145 468)" fill="white"/>
+<path d="M532 386C532 383.239 534.239 381 537 381H1125C1127.76 381 1130 383.239 1130 386V392C1130 394.761 1127.76 397 1125 397H537C534.239 397 532 394.761 532 392V386Z" fill="#ECEFF6"/>
+<path d="M532 412C532 409.239 534.239 407 537 407H1125C1127.76 407 1130 409.239 1130 412V418C1130 420.761 1127.76 423 1125 423H537C534.239 423 532 420.761 532 418V412Z" fill="#ECEFF6"/>
+<path d="M532 386C532 383.239 534.239 381 537 381H1125C1127.76 381 1130 383.239 1130 386V392C1130 394.761 1127.76 397 1125 397H537C534.239 397 532 394.761 532 392V386Z" fill="#ECEFF6"/>
+<path d="M532 439C532 436.239 534.239 434 537 434H1125C1127.76 434 1130 436.239 1130 439V445C1130 447.761 1127.76 450 1125 450H537C534.239 450 532 447.761 532 445V439Z" fill="#ECEFF6"/>
+<path d="M532 439C532 436.239 534.239 434 537 434H1125C1127.76 434 1130 436.239 1130 439V445C1130 447.761 1127.76 450 1125 450H537C534.239 450 532 447.761 532 445V439Z" fill="#ECEFF6"/>
+<rect x="-44" y="501" width="1600" height="515" fill="#ECEFF6"/>
+<rect x="90" y="600" width="194" height="250" fill="white"/>
+<rect x="319" y="600" width="194" height="250" fill="white"/>
+<rect x="548" y="600" width="194" height="250" fill="white"/>
+<rect x="777" y="600" width="194" height="250" fill="white"/>
+<rect x="1006" y="600" width="194" height="250" fill="white"/>
+<rect x="1235" y="600" width="194" height="250" fill="white"/>
+<rect x="17" y="32" width="243" height="22" fill="#ECEFF6"/>
+<rect x="17" y="36" width="243" height="32" fill="#ECEFF6"/>
+<rect x="444" y="36" width="659" height="32" fill="#ECEFF6"/>
+<rect x="1287" y="36" width="216" height="32" fill="#ECEFF6"/>
+</g>
+<defs>
+<clipPath id="clip0_2_3">
+<rect width="1512" height="982" fill="white"/>
+</clipPath>
+</defs>
+</svg>
